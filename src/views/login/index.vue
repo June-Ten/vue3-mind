@@ -1,23 +1,24 @@
 <template>
    <div class="center">
 <div >
-    <div>客户资源</div>
-    <div style="display: flex;justify-content: end;align-items: center;">
-        <div class="balance">
+    <div style="display: flex;justify-content: end;align-items: center;background: #fff;">
+        <!-- <div class="balance">
             <span style="padding: 10px;">余额：1500商豆</span>
             <span style="color: #3964F5;padding: 10px;">充值</span>
-        </div>
+        </div> -->
         <div class="phone" @click="openPhone">
             <tablet-outlined style="padding: 10px;"/>
             <span style="padding-right: 5px;">手机版</span>
         </div>
-        <div class="out"></div>
+        <div class="out">
+            <span style="color: #3964F5;">登录</span>
+        </div>
     </div>
    </div>
 
    <div class="body-center">
     <div>
-        <img src="../../assets/iamge/PREVIEW.png"></img>
+        <img src="../../assets/image/PREVIEW.png"></img>
     </div>
     <div style="font-weight: 400;font-size: 32px; color:#1D2129 ;line-height:4">说要找什么客户，大模型就帮你找什么客户</div>
     <div class="search">
@@ -28,7 +29,7 @@
         </div>
         <div style="line-height: 4;position: relative; right: 300px;bottom: -18px;">给我产品手册/业务文件，我告诉你客户是谁～</div>
         <div class="file">
-            <img style="padding: 5px;"  src="../../assets/iamge/pdf.png" alt="">
+            <img style="padding: 5px;"  src="../../assets/image/pdf.png" alt="">
             <span style="padding: 5px;">印控仪产品手册.pdf</span>
             <span style="padding: 5px;">哪些公司需要印控仪产品？</span>
 
@@ -36,21 +37,21 @@
         </div>
 
         <div class="file">
-            <img style="padding: 5px;" src="../../assets/iamge/P.png" alt="">
+            <img style="padding: 5px;" src="../../assets/image/P.png" alt="">
             <span style="padding: 5px;">国信数据服务有限公司业务PPT</span>
             <span style="padding: 5px;">请根据我的产品资料帮我推荐客户</span>
            
         </div>
    </div>
-   <a-modal v-model:visible="visiblePhone"  class="modalPhone" >
+   <a-modal  width="20%" v-model:open="visiblePhone"  class="modalPhone" >
 
     <template #title >
         商链手机端
     </template>
-    <div style="display: flex;justify-content: center;">
-      <div class="imgCover"><img style="width: 109px;height: 109px;" src="../../assets/iamge/ma.png"></img></div>  
-        <div>扫码下载</div>
-        <div>商链APP</div>
+    <div style="text-align: center;width: 30%;margin: 0 auto;">
+      <div class="imgCover"><img style="width: 109px;height: 109px;" src="../../assets/image/ma.png"></img></div>  
+        <div style="color: #5E6772;line-height: 3;">扫码下载</div>
+        <div style="color: #5E6772;">商链APP</div>
 
     </div>
     <template #footer>
@@ -72,7 +73,9 @@ const visiblePhone = ref(false)
 </script>
   <style  scoped>
 .center{
-padding: 20px;
+/* padding: 20px; */
+background: #f3f5fb;
+
 }
 .balance{
     width: 345px;
@@ -97,8 +100,10 @@ padding: 20px;
 .out{
     width: 60px;
     height: 60px;
-    background-color: #fff;
-    border-radius: 50%;   
+    background-color: #E8F1FF;
+    border-radius: 50%;  
+    padding: 14px;
+    margin-right: 10px
 }
 .body-center{
     display: flex;
@@ -106,6 +111,7 @@ padding: 20px;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  margin-top: 20px;
 
 }
 .search{
