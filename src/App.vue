@@ -3,6 +3,8 @@
 </template>
 
 <style lang="less">
+@import './assets/styles/global.less';
+
 * {
   margin: 0;
   padding: 0;
