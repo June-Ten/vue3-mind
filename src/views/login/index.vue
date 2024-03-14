@@ -8,7 +8,7 @@
             <span style="color: #3964F5;padding: 10px;">充值</span>
         </div>
         <div class="phone" @click="openPhone">
-            <!-- <icon-mobile style="padding: 10px;" :style="{fontSize:'22px'}" /> -->
+            <tablet-outlined style="padding: 10px;"/>
             <span style="padding-right: 5px;">手机版</span>
         </div>
         <div class="out"></div>
@@ -64,7 +64,8 @@
   </template>
 <script setup>
 import { ref } from 'vue';
-  const visiblePhone = ref(false)
+import { TabletOutlined, HomeOutlined} from '@ant-design/icons-vue';
+const visiblePhone = ref(false)
   function openPhone()  {
     visiblePhone.value = true
 }
