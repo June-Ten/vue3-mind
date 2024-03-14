@@ -64,8 +64,8 @@
   </template>
 <script setup>
 import { ref } from 'vue';
-import { TabletOutlined} from '@ant-design/icons-vue';
-  const visiblePhone = ref(false)
+import { TabletOutlined, HomeOutlined} from '@ant-design/icons-vue';
+const visiblePhone = ref(false)
   function openPhone()  {
     visiblePhone.value = true
 }
