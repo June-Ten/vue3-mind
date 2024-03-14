@@ -8,7 +8,7 @@
             <span style="color: #3964F5;padding: 10px;">充值</span>
         </div>
         <div class="phone" @click="openPhone">
-            <icon-mobile style="padding: 10px;" :style="{fontSize:'22px'}" />
+            <!-- <icon-mobile style="padding: 10px;" :style="{fontSize:'22px'}" /> -->
             <span style="padding-right: 5px;">手机版</span>
         </div>
         <div class="out"></div>
@@ -47,9 +47,11 @@
     <template #title >
         商链手机端
     </template>
-    <div>
+    <div style="display: flex;justify-content: center;">
       <div class="imgCover"><img style="width: 109px;height: 109px;" src="../../assets/iamge/ma.png"></img></div>  
-        <span></span>
+        <div>扫码下载</div>
+        <div>商链APP</div>
+
     </div>
     <template #footer>
         <div class="dialog-footer">
@@ -62,7 +64,6 @@
   </template>
 <script setup>
 import { ref } from 'vue';
-  import { IconMobile } from '@arco-design/web-vue/es/icon'
   const visiblePhone = ref(false)
   function openPhone()  {
     visiblePhone.value = true
