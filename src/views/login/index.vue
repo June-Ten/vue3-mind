@@ -10,22 +10,43 @@
             <tablet-outlined style="padding: 10px;"/>
             <span style="padding-right: 5px;">手机版</span>
         </div>
-        <div class="out">
-            <span style="color: #3964F5;">登录</span>
+        <div class="out" @click="userOut">
+            <!-- <img src="../../assets/image/user.png"></img> -->
+            <span style="color: #3964F5;" class="userImg"></span>
         </div>
+      
     </div>
    </div>
-
+   <div class="out-body">
+    <div ><span style="color: #3964F5;" class="userImg"></span></div>
+    <span style="display: block;"><edit-outlined/></span>
+    <div>13456789076</div>
+    <div style="border-top: 1px solid #eee;">
+       <span><edit-outlined style="padding: 10px;"/>
+    退出登录
+    </span> 
+    </div>
+</div>
    <div class="body-center">
     <div>
         <img src="../../assets/image/PREVIEW.png"></img>
     </div>
     <div style="font-weight: 400;font-size: 32px; color:#1D2129 ;line-height:4">说要找什么客户，大模型就帮你找什么客户</div>
     <div class="search">
-            <span style="padding: 5px;">我们公司是销售印控仪，哪些公司需要</span>
-            <span><img src="../../assets/file.svg" alt="">
+        <a-input
+        style="min-height: 84px;border: none;"
+      placeholder="请输入您的问题或需求"
+      auto-size
+    >
+    <template #suffix>
+        <img src="../../assets/file.svg" alt="">
+        <img src="../../assets/fly.svg" alt="">
+      </template>
+</a-input>
+            <!-- <span style="padding: 5px;">我们公司是销售印控仪，哪些公司需要</span> -->
+            <!-- <span><img src="../../assets/file.svg" alt="">
             <img src="../../assets/fly.svg" alt="">
-        </span>
+        </span> -->
         </div>
         <div style="line-height: 4;position: relative; right: 300px;bottom: -18px;">给我产品手册/业务文件，我告诉你客户是谁～</div>
         <div class="file">
@@ -65,10 +86,14 @@
   </template>
 <script setup>
 import { ref } from 'vue';
-import { TabletOutlined, HomeOutlined} from '@ant-design/icons-vue';
+import { TabletOutlined, EditOutlined} from '@ant-design/icons-vue';
 const visiblePhone = ref(false)
   function openPhone()  {
     visiblePhone.value = true
+}
+
+function userOut(){
+
 }
 </script>
   <style  scoped>
@@ -98,12 +123,9 @@ background: #f3f5fb;
     align-items: center;
 }
 .out{
-    width: 60px;
-    height: 60px;
-    background-color: #E8F1FF;
-    border-radius: 50%;  
+    width: 100px;
+    height: 100px;
     padding: 14px;
-    margin-right: 10px
 }
 .body-center{
     display: flex;
@@ -152,5 +174,21 @@ display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.userImg{
+    background: url('../../assets//image/user.png')no-repeat;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+.out-body{      
+    width: 260px;
+    height: 235px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    line-height: 3;
+    padding-top: 15px;
 }
 </style>
