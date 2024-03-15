@@ -11,9 +11,45 @@
       </div>
       <div class="phone-txt-box__txt">手机版</div>
     </div>
-    <div class="avatar-box">
-      <img src="@/assets/img/png/avatar-woman.png" alt="avatar" />
-    </div>
+    <a-dropdown
+      placement="bottomLeft"
+      :trigger="['hover']"
+    >
+      <div class="avatar-box">
+        <img src="@/assets/img/png/avatar-woman.png" alt="avatar" />
+      </div>
+      <template #overlay>
+        <div class="dropdown-slot-box">
+          <div class="dropdown-slot-box__top-box">
+            <div class="dropdown-slot-box__top-box__img-box">
+              <img
+                src="@/assets/img/png/avatar-woman.png"
+              />
+            </div>
+            <div class="dropdown-slot-box__top-box__edit-icon-box">
+              <img
+                src="@/assets/img/svg/editIcon.svg"
+                alt="edit-icon"
+              />
+            </div>
+            <div class="dropdown-slot-box__top-box__phone-box">
+              182****8072
+            </div>
+          </div>
+          <div class="dropdown-slot-box__bottom-box">
+            <div class="dropdown-slot-box__bottom-box__logout-img-box">
+              <img
+                src="@/assets/img/svg/logout.svg"
+                alt="logout-icon"
+              />
+            </div>
+            <div class="dropdown-slot-box__bottom-box-logout-txt-box">
+              退出登录
+            </div>
+          </div>
+        </div>
+      </template>
+    </a-dropdown>
     <a-modal
       v-model:open="open"
       :footer="null"
@@ -126,5 +162,62 @@ const open = ref(false)
     color: rgba(94, 103, 114, 1);
     font-size: 14px;
   }
+}
+.dropdown-slot-box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 150px;
+  .dropdown-slot-box__top-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    .dropdown-slot-box__top-box__img-box {
+      width: 40px;
+      height: 40px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    .dropdown-slot-box__top-box__edit-icon-box {
+      width: 18px;
+      height: 18px;
+      margin-top: 10px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .dropdown-slot-box__top-box__phone-box {
+      margin-top: 5px;
+      font-size: 14px;
+      color: rgba(134, 144, 156, 1);
+    }
+  }
+  .dropdown-slot-box__bottom-box {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      .dropdown-slot-box__bottom-box__logout-img-box {
+        width: 18px;
+        height: 18px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .dropdown-slot-box__bottom-box-logout-txt-box {
+        margin-left: 10px;
+        font-size: 14px;
+        color: rgba(29, 33, 41, 1);
+      }
+    }
 }
 </style>
