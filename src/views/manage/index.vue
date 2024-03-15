@@ -90,8 +90,13 @@
       </div>
     </div>
     <div class="right-content-box">
-      <div class="right-content-box__navbar-box">
+      <div class="right-content-box__navbar-box" style="height: 65px;">
         <nav-bar />
+      </div>
+      <div class="right-content-box_content-self">
+        <FindingCustomers v-if="current === 0"/>
+        <CustomerManagement v-if="current === 1"/>
+        <SalesManagement v-if="current === 2"/>
       </div>
     </div>
   </div>
@@ -100,6 +105,9 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import NavBar from '@/components/common/navbar/index.vue'
+import FindingCustomers from './components/FindingCustomers.vue'
+import CustomerManagement from './components/CustomerManagement.vue'
+import SalesManagement from './components/SalesManagement.vue'
 
 const current = ref(0)
 
@@ -192,7 +200,6 @@ const inputValue = ref('')
       display: flex;
       flex-direction: column;
       width: 100%;
-      padding-top: 20px;
       .left-tabs-box__middle-list__item-box {
         &.active-history {
           border: none;
@@ -256,6 +263,10 @@ const inputValue = ref('')
       display: flex;
       justify-content: flex-end;
       align-items: center;
+    }
+    .right-content-box_content-self {
+      width: 100%;
+      height: calc(100% - 65px); 
     }
   }
 }
