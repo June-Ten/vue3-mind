@@ -17,8 +17,8 @@
       
     </div>
    </div>
-   <div class="out-body">
-    <div ><span style="color: #3964F5;" class="userImg"></span></div>
+   <div class="out-body" v-if="showOut">
+    <div style="width: 100%;"><span style="color: #3964F5;" class="userImg"></span></div>
     <span style="display: block;"><edit-outlined/></span>
     <div>13456789076</div>
     <div style="border-top: 1px solid #eee;">
@@ -64,17 +64,19 @@
            
         </div>
    </div>
-   <a-modal  width="20%" v-model:open="visiblePhone"  class="modalPhone" >
-
-    <template #title >
+   <a-modal  :width="240" v-model:open="visiblePhone"  class="modalPhone" >
+    <div style="display: flex;flex-direction: column;">
+<div class="title">商链手机端</div>
+    <!-- <template #title >
         商链手机端
-    </template>
-    <div style="text-align: center;width: 30%;margin: 0 auto;">
+    </template> -->
+    <div style="text-align: center;margin: 0 auto;">
       <div class="imgCover"><img style="width: 109px;height: 109px;" src="../../assets/image/ma.png"></img></div>  
         <div style="color: #5E6772;line-height: 3;">扫码下载</div>
         <div style="color: #5E6772;">商链APP</div>
 
     </div>
+</div>
     <template #footer>
         <div class="dialog-footer">
         
@@ -88,12 +90,13 @@
 import { ref } from 'vue';
 import { TabletOutlined, EditOutlined} from '@ant-design/icons-vue';
 const visiblePhone = ref(false)
+const showOut  = ref(false)
   function openPhone()  {
     visiblePhone.value = true
 }
 
 function userOut(){
-
+    showOut.value=!showOut.value
 }
 </script>
   <style  scoped>
@@ -113,14 +116,15 @@ background: #f3f5fb;
     align-items: center;
 }
 .phone{
-    width: 100px;
-    height: 57px;
-    background-color: #fff;
-    border-radius: 17px;  
-    margin-right: 10px;
-    display: flex;
     justify-content: space-between;
+    display: flex;
     align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-left: 20px;
+    cursor: pointer;
 }
 .out{
     width: 100px;
@@ -176,10 +180,11 @@ display: flex;
     align-items: center;
 }
 .userImg{
-    background: url('../../assets//image/user.png')no-repeat;
+    background: url('../../assets/image/user.png')no-repeat;
     width: 60px;
     height: 60px;
     display: block;
+    margin: 0 auto;
 }
 .out-body{      
     width: 260px;
@@ -190,5 +195,12 @@ display: flex;
     text-align: center;
     line-height: 3;
     padding-top: 15px;
+    position: absolute;
+    right: 15px;
+}
+.title{
+    text-align: center;
+    font-size: 24px;
+    line-height: 2;
 }
 </style>

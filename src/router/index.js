@@ -21,6 +21,16 @@ const routes = [
         path: 'login',
         name: 'Login',
         component: () => import('@/views/login/index.vue')
+      },
+      {
+        path: 'saleMange',
+        name: 'SaleMange',
+        component: () => import('@/views/saleMange/index.vue')
+      },
+      {
+        path: 'salesLeft',
+        name: 'salesLeft',
+        component: () => import('@/views/manage/components/salesLeft.vue')
       }
     ]
   }
