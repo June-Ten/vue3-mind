@@ -68,9 +68,11 @@
           <div class="bottom-item__clue line-1">
             关系线索：TA是你的校友
           </div>
-          <div class="bottom-item__assign">
-            指派
-          </div>
+          <SelectSales>
+            <div class="bottom-item__assign">
+              指派
+            </div>
+          </SelectSales>
         </div>
       </div>
     </div>
@@ -78,7 +80,8 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
+import SelectSales from '@/components/common/selectSales/index.vue'
 
 
 const current = ref(0)
