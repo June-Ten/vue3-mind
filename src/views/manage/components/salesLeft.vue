@@ -37,19 +37,21 @@
           </template>
             </div>
      <div>
-        <div class="card-box">
-         <div style="display: flex;align-items: center;">
-            <img src="../../../assets/image/user.png" alt="">
+        <div class="card-box" >
+         <div style="display: flex;">
+           <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
             <div class="meng">
-                <span>原大明</span><span style="color: #F98981;">消耗30商豆</span>
+                <span style="font-size: 20px;font-weight: 400;">原大明</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
+            <div style="text-align: center;">1818148072</div>
             </div>
-            
         </div>
-        <div style="text-align: center;">1818148072</div>
-            <div>
-                <a-tooltip title="3 done / 3 in progress / 4 to do">
-      <a-progress :percent="60" :success="{ percent: 30 }" />
-    </a-tooltip>
+            <div class="progress-with-values">
+      <a-progress :show-info="false" :percent="60" :success="{ percent: 30 }" />
+      <div class="progress-values">
+      <span>已成交3</span>
+      <span>已跟进6</span>
+      <span>目标10</span>
+    </div>
          </div>
         </div>
      </div>
@@ -165,6 +167,16 @@ const currentTwo= ref(0)
   ])
   
   const inputValue = ref('')
+
+   function  customFormat(percentage) {
+      // 假设你想要显示三个不同的值
+      const part1 = `已完成：${percentage}% `;
+      const part2 = `总进度：100% `;
+      const part3 = `剩余：${100 - percentage}% `;
+      
+      // 将三个部分合并成一个字符串返回
+      return part1 + part2 + part3;
+    }
   </script>
   
   <style lang="less" scoped>
@@ -309,4 +321,24 @@ const currentTwo= ref(0)
     background-color: #fff;
     border: 1px solid #000;
   }
+
+  .meng{
+    width: 200px;
+    margin-top: 25px;
+  }
+
+  .progress-with-values {
+  position: relative;
+  top: 55px;
+}
+.progress-values {
+  position: absolute;
+  top: -15px; /* 根据需要调整位置 */
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+    justify-content: space-around;
+}
   </style>
