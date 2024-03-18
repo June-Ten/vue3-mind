@@ -16,7 +16,7 @@
         </template>
       </div>
     </div>
-    <div class="bottom">
+    <div class="bottom" v-if="!isViewDetail">
       <div
         class="bottom-empty"
         v-if="false"
@@ -31,13 +31,34 @@
         />
       </div>
     </div>
+    <div
+      class="bottom"
+      style="padding-right: 0;"
+      v-if="isViewDetail"
+    >
+      <div class="bottom-inner">
+        <div class="bottom-left-card-list">
+          <CustomerCard
+            v-for="item in 10"
+            :class="[{ 'active-card': currentDeatil === item }]"
+            @click="currentDeatil = item"
+          />
+        </div>
+        <div class="bottom-right-card-deatil-box">
+          <div class="bottom-right-card-deatil__top">
+            <CardDetail />
+          </div>
+          <div class="bottom-right-card-deatil__bottom"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import SelectSales from '@/components/common/selectSales/index.vue'
 import CustomerCard from '@/components/common/customerCard/index.vue'
+import CardDetail from './CardDetail.vue'
 
 
 const current = ref(0)
@@ -59,6 +80,9 @@ const tabs = [
     id: 2
   }
 ]
+
+const isViewDetail = ref(true)
+const currentDeatil = ref(1)
 </script>
 
 <style lang="less" scoped>
@@ -201,6 +225,34 @@ const tabs = [
           height: 25px;
           margin-top: 15px;
           cursor: pointer;
+        }
+      }
+    }
+    .bottom-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      .bottom-left-card-list {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .active-card {
+          background-color: #f2f3f5;
+        }
+      }
+      .bottom-right-card-deatil-box {
+        margin-left: 10px;
+        width: calc(75% - 10px);
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 10px;
+        .bottom-right-card-deatil__top {
+          width: 100%;
         }
       }
     }

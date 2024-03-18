@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import SelectSales from '@/components/common/selectSales/index.vue'
+import SelectSales from '../selectSales/index.vue'
 </script>
 
 <style lang="less" scoped>
@@ -63,6 +63,7 @@ import SelectSales from '@/components/common/selectSales/index.vue'
   border: 1px solid rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   padding: 5px;
+  cursor: pointer;
   .bottom-item__first-img-box {
     display: flex;
     align-items: center;
