@@ -21,8 +21,11 @@
             </div>
           </template>
         </div>
-        <div class="left-tabs-box__middle-list-box">
-            <div style="display: ruby;">
+        <div class="button-top">
+          <a-button  :icon="h(PlusOutlined)">添加销售</a-button>
+        </div>
+        <div class="left-tabs-box__middle-list-box center-box">
+            <div style="display: ruby;margin-bottom: 10px;">
                 <template
             v-for="tab in tabsTwo"
             :key="tab.id"
@@ -38,11 +41,12 @@
             </div>
      <div>
         <div class="card-box" >
-         <div style="display: flex;">
+          <div class="card-right-top">员工</div>
+         <div style="display: flex;margin-top: 10px;">
            <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
             <div class="meng">
                 <span style="font-size: 20px;font-weight: 400;">原大明</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
-            <div style="text-align: center;">1818148072</div>
+            <div style="color:#86909C;font-size: 14px;">1818148072</div>
             </div>
         </div>
             <div class="progress-with-values">
@@ -115,6 +119,8 @@
   <script setup>
   import { ref, reactive } from 'vue'
   import NavBar from '@/components/common/navbar/index.vue'
+  import { h } from 'vue';
+  import { PlusOutlined } from '@ant-design/icons-vue';
 const currentTwo= ref(0)
   const current = ref(0)
   const tabsTwo = reactive([
@@ -319,7 +325,11 @@ const currentTwo= ref(0)
     width: 440px;
     height: 169px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+position: relative;
+overflow: hidden;
   }
 
   .meng{
@@ -329,7 +339,7 @@ const currentTwo= ref(0)
 
   .progress-with-values {
   position: relative;
-  top: 55px;
+  top: 40px;
 }
 .progress-values {
   position: absolute;
@@ -340,5 +350,32 @@ const currentTwo= ref(0)
   z-index: 1;
   display: flex;
     justify-content: space-around;
+}
+.card-right-top{
+ width:78px;
+height:25px;
+background-color: rgba(212, 212, 212, 1);
+font-size: 14px;
+text-align: center;
+transform: rotate(45deg);
+position: absolute;
+    right: -16px;
+    z-index: 0;
+
+}
+
+.button-top{
+    line-height: 7;
+button{
+  width: 440px;
+    height: 64px;
+    border-radius: 8px;
+    color:rgba(57, 100, 245, 1) ;
+}
+}
+
+.center-box{
+  line-height: 3;
+  
 }
   </style>
