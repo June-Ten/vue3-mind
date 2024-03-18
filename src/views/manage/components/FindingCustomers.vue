@@ -44,7 +44,7 @@
             @click="currentDeatil = item"
           />
         </div>
-        <div class="bottom-right-card-deatil-box" v-if="false">
+        <div class="bottom-right-card-deatil-box">
           <div class="bottom-right-card-deatil__top">
             <CardDetail />
           </div>
@@ -70,7 +70,7 @@
             <CreditReport v-if="currentCompanyId === 3" />
           </div>
         </div>
-        <div class="bottom-right-card-deatil-box" >
+        <div class="bottom-right-card-deatil-box"  v-if="false">
           <infoFinding/>
 </div>
       </div>
@@ -136,7 +136,7 @@ const companyTabs = [
   }
 ]
 
-const currentCompanyId = ref(0)
+const currentCompanyId = ref(2)
 </script>
 
 <style lang="less" scoped>
