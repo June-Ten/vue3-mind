@@ -26,54 +26,9 @@
         </span>
       </div>
       <div class="bottom__list">
-        <div
-          class="bottom-item-box"
+        <CustomerCard
           v-for="item in 20"
-        >
-          <div class="bottom-item__first-img-box">
-            <div class="first-left-img-box">
-              <img
-                src="@/assets/img/png/avatar-man.png"
-                alt="first-left-img"
-              />
-            </div>
-            <div class="first-middle-txt-box">
-              <div class="name-box">
-                <span>张三</span>
-                <div class="address-img-box">
-                  <img
-                    src="@/assets/img/svg/address.svg"
-                    alt="address-icon"
-                  />
-                </div>
-                <span class="address-txt">北京</span>
-              </div>
-              <div class="middle-subject">
-                <span>航天信息·工程师</span>
-              </div>
-            </div>
-            <div class="first-right-like-box">
-              <img
-                src="@/assets/img/svg/like.svg"
-                alt="like-icon"
-              />
-            </div>
-          </div>
-          <div class="bottom-item__desc-box line-1">
-            <span>简介：工业软件开发、大型系统集成服务商</span>
-          </div>
-          <div class="bottom-item__reason-for-recommen line-2">
-            推荐理由：根据周渊所在公司产品和服务分析，能够为您提供可靠的发票供应和技术支持。
-          </div>
-          <div class="bottom-item__clue line-1">
-            关系线索：TA是你的校友
-          </div>
-          <SelectSales>
-            <div class="bottom-item__assign">
-              指派
-            </div>
-          </SelectSales>
-        </div>
+        />
       </div>
     </div>
   </div>
@@ -82,6 +37,7 @@
 <script setup>
 import { ref } from 'vue'
 import SelectSales from '@/components/common/selectSales/index.vue'
+import CustomerCard from '@/components/common/customerCard/index.vue'
 
 
 const current = ref(0)
