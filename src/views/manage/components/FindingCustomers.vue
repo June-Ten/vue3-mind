@@ -48,7 +48,27 @@
           <div class="bottom-right-card-deatil__top">
             <CardDetail />
           </div>
-          <div class="bottom-right-card-deatil__bottom"></div>
+          <div class="company-tabs-box">
+            <template
+              v-for="item in companyTabs"
+              :key="item.id"
+            >
+              <div
+                class="company-tabs__item"
+                :class="{ 'company-tabs__item-active': currentCompanyId === item.id }"
+                @click="currentCompanyId = item.id"
+              >
+                {{ item.title }}
+              </div>
+            </template>
+          </div>
+          <a-divider style="margin: 5px 0;"/>
+          <div class="bottom-right-card-deatil__bottom">
+            <Shareholders v-if="currentCompanyId === 0" />
+            <Investment v-if="currentCompanyId === 1" />
+            <RiskInquiry v-if="currentCompanyId === 2" />
+            <CreditReport v-if="currentCompanyId === 3" />
+          </div>
         </div>
       </div>
     </div>
@@ -58,7 +78,11 @@
 <script setup>
 import { ref } from 'vue'
 import CustomerCard from '@/components/common/customerCard/index.vue'
-import CardDetail from './CardDetail.vue'
+import CardDetail from './FindComponents/CardDetail.vue'
+import Shareholders from './FindComponents/Shareholders.vue'
+import Investment from './FindComponents/Investment.vue'
+import RiskInquiry from './FindComponents/RiskInquiry.vue'
+import CreditReport from './FindComponents/CreditReport.vue'
 
 
 const current = ref(0)
@@ -82,7 +106,33 @@ const tabs = [
 ]
 
 const isViewDetail = ref(true)
+
 const currentDeatil = ref(1)
+
+const companyTabs = [
+  {
+    title: '企业股东',
+    key: 'shareholder',
+    id: 0
+  },
+  {
+    title: '对外投资',
+    key: 'investment',
+    id: 1
+  },
+  {
+    title: '风险查询',
+    key: 'risk',
+    id: 2
+  },
+  {
+    title: '企业信用报告',
+    key: 'creditReport',
+    id: 3
+  }
+]
+
+const currentCompanyId = ref(0)
 </script>
 
 <style lang="less" scoped>
@@ -251,8 +301,26 @@ const currentDeatil = ref(1)
         flex-direction: column;
         background-color: white;
         padding: 10px;
+        overflow-y: auto;
         .bottom-right-card-deatil__top {
           width: 100%;
+        }
+        .company-tabs-box {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+          color: rgba(134, 144, 156, 1);
+          cursor: pointer;
+          margin-top: 15px;
+        }
+        .company-tabs__item-active {
+          color: rgba(57, 100, 245, 1);
+        }
+        .bottom-right-card-deatil__bottom {
+          width: 100%;
+          display: flex;
         }
       }
     }

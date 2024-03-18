@@ -36,9 +36,11 @@
           <div class="top-right__calc-box">
             关系计算
           </div>
-          <div class="top-right__assign-box">
-            指派
-          </div>
+          <SelectSales>
+            <div class="top-right__assign-box">
+              指派
+            </div>
+          </SelectSales>
         </div>
       </a-col>
     </a-row>
@@ -140,6 +142,10 @@
   </div>
 </template>
 
+<script setup>
+import SelectSales from '@/components/common/selectSales/index.vue'
+</script>
+
 <style lang="less" scoped>
 .mgn-top {
   margin-top: 10px;
@@ -210,12 +216,24 @@
       padding: 5px 10px;
       color: rgba(57, 100, 245, 1);
       border-radius: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(57, 100, 245, 1);
+        border: 1px solid rgba(57, 100, 245, 1);
+        color: white;
+      }
     }
     .top-right__assign-box {
       border: 1px solid rgba(57, 100, 245, 1);
       padding: 5px 10px;
       color: rgba(57, 100, 245, 1);
       border-radius: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(57, 100, 245, 1);
+        border: 1px solid rgba(57, 100, 245, 1);
+        color: white;
+      }
     }
   }
   .reason-for-recommen {
