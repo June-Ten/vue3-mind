@@ -28,7 +28,7 @@
     <ShareholderInformation
       v-for="(item, index) in shareholdersList"
       :key="item.name"
-      :inx="index"
+      :inx="index + 1"
       :name="item.name"
       :percent="item.percent"
       :money="item.money"
