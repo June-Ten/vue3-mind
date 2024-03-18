@@ -106,7 +106,7 @@
               <div style="display: flex; align-items: center">
                 <img src="../../../assets/image/user.png" alt="" />
                 <span style="margin-left: 10px"
-                  >余晓峰
+                  >原旭义  （国信数据）
                   <span style="color: #86909c; margin-left: 40px"
                     >跟进记录：已添加原旭义微信：ffffhu3456</span
                   ></span
@@ -121,7 +121,7 @@
               <div style="display: flex; align-items: center">
                 <img src="../../../assets/image/user.png" alt="" />
                 <span style="margin-left: 10px"
-                  >余晓峰
+                  >赵二（炊烟小厨）
                   <span style="color: #86909c; margin-left: 40px"
                     >跟进记录：已添加赵二微信：fiona3345</span
                   ></span
@@ -135,7 +135,7 @@
               <div style="display: flex; align-items: center">
                 <img src="../../../assets/image/user.png" alt="" />
                 <span style="margin-left: 10px"
-                  >余晓峰
+                  >吕大（法聪聪科技）
                   <span style="color: #86909c; margin-left: 40px"
                     >跟进记录：添加吕大一直没有通过</span
                   ></span
@@ -148,7 +148,7 @@
             <div class="step">
               <div style="display: flex; align-items: center">
                 <img src="../../../assets/image/user.png" alt="" />
-                <span style="margin-left: 10px">余晓峰</span>
+                <span style="margin-left: 10px">孙天（法大大）</span>
               </div>
 
               <div class="step-current">通讯录好友</div>

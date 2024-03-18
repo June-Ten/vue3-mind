@@ -44,12 +44,17 @@
             @click="currentDeatil = item"
           />
         </div>
-        <div class="bottom-right-card-deatil-box">
+        <div class="bottom-right-card-deatil-box" v-if="false">
           <div class="bottom-right-card-deatil__top">
             <CardDetail />
           </div>
-          <div class="bottom-right-card-deatil__bottom"></div>
+          <div  class="bottom-right-card-deatil__bottom">
+
+          </div>
         </div>
+        <div class="bottom-right-card-deatil-box" >
+          <infoFinding/>
+</div>
       </div>
     </div>
   </div>
@@ -59,6 +64,7 @@
 import { ref } from 'vue'
 import CustomerCard from '@/components/common/customerCard/index.vue'
 import CardDetail from './CardDetail.vue'
+import infoFinding from './infoFinding.vue'
 
 
 const current = ref(0)

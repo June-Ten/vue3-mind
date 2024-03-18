@@ -22,7 +22,7 @@
           </template>
         </div>
         <div class="button-top">
-          <a-button  :icon="h(PlusOutlined)">添加销售</a-button>
+          <a-button @click="addSales"  :icon="h(PlusOutlined)">添加销售</a-button>
         </div>
         <div class="left-tabs-box__middle-list-box center-box">
             <div style="display: ruby;margin-bottom: 10px;">
@@ -114,6 +114,32 @@
         </div>
       </div>
     </div>
+    <a-modal  :width="500" v-model:open="visibleSale"  class="modalPhone" >
+    <div style="display: flex;flex-direction: column;">
+<div class="title">添加销售</div>
+    <!-- <template #title >
+        商链手机端
+    </template> -->
+    <div style="text-align: center;margin: 20px 0 0 0 ;">
+      <a-input style="width: 356px;height: 48px; border-radius: 64px;margin: 10px;"  placeholder="请输入姓名" />
+      <a-input style="width: 356px;height: 48px; border-radius: 64px;margin: 10px;"  placeholder="请输入手机号" />
+    </div>
+    <div style="font-size: 16px;font-weight: 500;text-align: center;line-height: 3;">请选择办公类型</div>
+    <div style="display: flex;justify-content: space-evenly;margin: 10px;">
+    <div class="button-text" style="border: 1px solid #3964F5;">员工</div>
+    <div  class="button-text" style="border: 1px solid #C9CDD4;">兼职</div>
+
+  </div>
+  <div class="button-modal">
+  <a-button  type="primary">确认</a-button>
+</div>
+</div>
+    <template #footer>
+        <div class="dialog-footer">
+        
+        </div>
+      </template>
+  </a-modal>
   </template>
   
   <script setup>
@@ -123,6 +149,7 @@
   import { PlusOutlined } from '@ant-design/icons-vue';
 const currentTwo= ref(0)
   const current = ref(0)
+  const visibleSale = ref(false)
   const tabsTwo = reactive([
     {
       id: 0,
@@ -182,6 +209,9 @@ const currentTwo= ref(0)
       
       // 将三个部分合并成一个字符串返回
       return part1 + part2 + part3;
+    }
+     function addSales(){
+      visibleSale.value= true
     }
   </script>
   
@@ -377,5 +407,23 @@ button{
 .center-box{
   line-height: 3;
   
+}
+.button-text{
+  width:96px;
+  height: 48px;
+   border-radius: 64px;
+   text-align: center;
+   line-height: 3;
+}
+.button-modal{
+  text-align: center;
+  margin-top: 10px;
+  button{
+    width: 356px;
+    height: 48px;
+    border-radius: 64px;
+    background-color: #3964F5;
+  }
+
 }
   </style>
