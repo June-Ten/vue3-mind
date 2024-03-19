@@ -19,13 +19,13 @@
     <div class="bottom" v-if="!isViewDetail">
       <div
         class="bottom-empty"
-        v-if="false"
+        v-if="empty"
       >
         <span>
           抱歉！没有找到相关结果，您可以重新输入其他问题
         </span>
       </div>
-      <div class="bottom__list">
+      <div class="bottom__list" v-if="!empty">
         <CustomerCard
           v-for="item in 20"
         />
@@ -137,6 +137,13 @@ const companyTabs = [
 ]
 
 const currentCompanyId = ref(0)
+
+const props = defineProps({
+  empty: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <style lang="less" scoped>

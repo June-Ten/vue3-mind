@@ -164,7 +164,10 @@
         <nav-bar />
       </div>
       <div class="right-content-box_content-self">
-        <FindingCustomers v-if="current === 0"/>
+        <FindingCustomers
+          v-if="current === 0"
+          :empty="!searchHistory[currentHistory].hasResult"
+        />
         <CustomerManagement v-if="current === 1"/>
         <SalesManagement v-if="current === 2"/>
       </div>
@@ -260,7 +263,7 @@ function sendQuestion() {
     id: Date.now(),
     title: inputValue.value,
     content: '没有找到相关结果',
-    hasResult: false,
+    hasResult: true,
     type: 'msg'
   })
   if (name.value) {
