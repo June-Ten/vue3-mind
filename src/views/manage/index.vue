@@ -44,7 +44,7 @@
                 />
               </div>
               <div class="left-tabs-box__middle-list__item-box__file__right-txt-box line-1">
-                印控仪产品手册.pdf
+                {{ item.name }}
               </div>
             </div>
             <div
@@ -70,7 +70,7 @@
       <div class="left-tabs-box__search-area-box">
         <div
           class="left-tabs-box__search-area-box__top-file-box"
-          v-if="true"
+          v-if="name"
         >
           <div
             class="left-tabs-box__search-area-box__top-file-box__self-box"
@@ -85,13 +85,16 @@
               <div
                 class="left-tabs-box__search-area-box__top-file-box__self-box__right-txt-box__title line-1"
               >
-                印控仪产品手册.pdf01234567890123456789
+                {{ name }}
               </div>
               <div class="left-tabs-box__search-area-box__top-file-box__self-box__right-txt-box__desc">
                 {{ status }}
               </div>
             </div>
-            <div class="left-tabs-box__search-area-box__top-file-box__cancel-img-box">
+            <div
+              class="left-tabs-box__search-area-box__top-file-box__cancel-img-box"
+              @click="clearTimer"
+            >
               <img
                 src="@/assets/img/svg/cancel.svg"
                 alt="cancel-icon"
@@ -110,22 +113,32 @@
             v-model:value="inputValue"
           />
           <div class="textarea-after-box">
-            <a-tooltip>
-              <template #title>
-                支持上传文件 (最多 50 个，每个 100 MB) 接受 pdf、doc、xlsx、ppt、txt、图片等
-              </template>
-              <div class="textarea-after-box__upload-img-box">
-                <img
-                  src="@/assets/img/svg/upload.svg"
-                  alt="upload-icon"
-                />
-              </div>
-            </a-tooltip>
+            <a-upload
+              accept=".pdf,.PDF"
+              :beforeUpload="beforeUpload"
+              :maxCount="1"
+              :showUploadList="false"
+            >
+              <a-tooltip>
+                <template #title>
+                  <!-- 支持上传文件 (最多 50 个，每个 100 MB) 接受 pdf、doc、xlsx、ppt、txt、图片等 -->
+                  支持上传文件
+                </template>
+                <div class="textarea-after-box__upload-img-box">
+                  <img
+                    src="@/assets/img/svg/upload.svg"
+                    alt="upload-icon"
+                  />
+                </div>
+              </a-tooltip>
+            </a-upload>
             <a-tooltip v-if="inputValue?.length === 0">
               <template #title>
                 请输入你的问题
               </template>
-              <div class="textarea-after-box__aircraft-img-box">
+              <div
+                class="textarea-after-box__aircraft-img-box"
+              >
                 <img
                   src="@/assets/img/svg/aircraft.svg"
                   alt="aircraft-icon"
@@ -135,6 +148,7 @@
             <div
               class="textarea-after-box__aircraft-img-box"
               v-if="inputValue?.length > 0"
+              @click="sendQuestion"
             >
               <img
                 src="@/assets/img/svg/aircraftActive.svg"
@@ -166,6 +180,7 @@ import CustomerManagement from './components/CustomerManagement.vue'
 import SalesManagement from './components/SalesManagement.vue'
 import uploadingImg from '@/assets/img/svg/uploading.svg'
 import pdfImg from '@/assets/img/svg/pdf.svg'
+import { message } from 'ant-design-vue'
 
 const current = ref(0)
 
@@ -206,7 +221,8 @@ const searchHistory = reactive([
     title: '能提供发票供应的有哪些企业',
     content: '推荐xxxx个资源，采纳xxx个',
     hasResult: true,
-    type: 'file'
+    type: 'file',
+    name: '发票.pdf',
   }
 ])
 
@@ -233,16 +249,61 @@ const fileImgSrc = ref(uploadingImg)
 
 const status = ref('上传中')
 
+const name = ref('')
+
+const timer = ref(null)
+
 let tempInx = 0
 
-// setInterval(() => {
-//   if (tempInx === 3) {
-//     tempInx = 0
-//   }
-//   fileImgSrc.value = tempFileList[tempInx].src
-//   status.value = tempFileList[tempInx].size
-//   tempInx++
-// }, 2000);
+function sendQuestion() {
+  searchHistory.push({
+    id: Date.now(),
+    title: inputValue.value,
+    content: '没有找到相关结果',
+    hasResult: false,
+    type: 'msg'
+  })
+  if (name.value) {
+    searchHistory.at(-1).type = 'file'
+    searchHistory.at(-1).content = '1.64MB'
+    searchHistory.at(-1).name = name.value
+  }
+  inputValue.value = ''
+  clearTimer()
+}
+
+function beforeUpload(file, fileList) {
+  if (file.name.split('.').pop() !== 'pdf') {
+    message.warning('只能上传pdf文件')
+    return false
+  }
+  name.value = file.name
+  file.value = file
+  timer.value = setInterval(() => {
+    if (tempInx === 3) {
+      // tempInx = 0
+      // file = null
+      // name.value = ''
+      // clearInterval(timer)
+      // clearTimer()
+    }
+    fileImgSrc.value = tempFileList[tempInx].src
+    status.value = tempFileList[tempInx].size
+    tempInx++
+  }, 2000);
+  console.log('file.value', file.value)
+  return true
+}
+
+function clearTimer() {
+  tempInx = 0
+  file.value = null
+  name.value = ''
+  fileImgSrc.value = tempFileList[tempInx].src
+  status.value = tempFileList[tempInx].size
+  clearInterval(timer.value)
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -296,7 +357,12 @@ let tempInx = 0
       display: flex;
       flex-direction: column;
       width: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       .left-tabs-box__middle-list__item-box {
+        flex-shrink: 0;
         .left-tabs-box__middle-list__item-box__file {
           width: 100%;
           display: flex;

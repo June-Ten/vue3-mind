@@ -109,7 +109,7 @@ const tabs = [
   }
 ]
 
-const isViewDetail = ref(true)
+const isViewDetail = ref(false)
 
 const currentDeatil = ref(1)
 
@@ -136,7 +136,7 @@ const companyTabs = [
   }
 ]
 
-const currentCompanyId = ref(2)
+const currentCompanyId = ref(0)
 </script>
 
 <style lang="less" scoped>
