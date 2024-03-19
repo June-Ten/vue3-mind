@@ -1,26 +1,6 @@
 <template>
-    <div class="manage-box">
-      <div class="left-tabs-box">
-        <div class="left-tabs-box__top-tabs-box">
-          <div class="home-svg-box">
-            <img
-              src="@/assets/img/svg/home-blue.svg"
-              alt="home-icon"
-            />
-          </div>
-          <template
-            v-for="tab in tabs"
-            :key="tab.id"
-          >
-            <div
-              class="tabs-item-box"
-              :class="{ 'active': current === tab.id }"
-              @click="current = tab.id"
-            >
-              {{ tab.label }}
-            </div>
-          </template>
-        </div>
+    <div class="manage-box1">
+      <div class="left-tabs-box1">
         <div class="button-top">
           <a-button @click="addSales"  :icon="h(PlusOutlined)">添加销售</a-button>
         </div>
@@ -46,10 +26,12 @@
            <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
             <div class="meng">
                 <span style="font-size: 20px;font-weight: 400;">原大明</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
-            <div style="color:#86909C;font-size: 14px;">1818148072</div>
+            <div style="color:#86909C;font-size: 14px;line-height: 3px;">1818148072</div>
             </div>
         </div>
-            <div class="progress-with-values">
+
+        </div>
+        <div class="progress-with-values">
       <a-progress :show-info="false" :percent="60" :success="{ percent: 30 }" />
       <div class="progress-values">
       <span>已成交3</span>
@@ -57,62 +39,73 @@
       <span>目标10</span>
     </div>
          </div>
+     </div>
+
+     <div>
+        <div class="card-box" >
+          <div class="card-right-top">兼职</div>
+         <div style="display: flex;margin-top: 10px;">
+           <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
+            <div class="meng">
+                <span style="font-size: 20px;font-weight: 400;">余晓峰</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
+            <div style="color:#86909C;font-size: 14px;line-height: 3px;">1818148072</div>
+            </div>
         </div>
+
+        </div>
+        <div class="progress-with-values">
+      <a-progress :show-info="false" :percent="60" :success="{ percent: 30 }" />
+      <div class="progress-values">
+      <span>已成交2</span>
+      <span>已跟进4</span>
+      <span>目标10</span>
+    </div>
+         </div>
+     </div>
+     <div>
+        <div class="card-box" >
+          <div class="card-right-top">员工</div>
+         <div style="display: flex;margin-top: 10px;">
+           <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
+            <div class="meng">
+                <span style="font-size: 20px;font-weight: 400;">莫树明</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
+            <div style="color:#86909C;font-size: 14px;line-height: 3px;">1818148072</div>
+            </div>
+        </div>
+
+        </div>
+        <div class="progress-with-values">
+      <a-progress :show-info="false"  :success="{ percent: 30 }" />
+      <div class="progress-values">
+      <span>已跟进6</span>
+      <span>目标10</span>
+    </div>
+         </div>
+     </div>
+     <div>
+        <div class="card-box" >
+          <div class="card-right-top">员工</div>
+         <div style="display: flex;margin-top: 10px;">
+           <div style="width: 80px;margin: 10px 0 0 10px;"><img src="../../../assets/image/user.png" alt=""></div> 
+            <div class="meng">
+                <span style="font-size: 20px;font-weight: 400;">赵振华</span><span style="margin-left: 10px;color: #F98981;font-size: 12px;">消耗30商豆</span>
+            <div style="color:#86909C;font-size: 14px;line-height: 3px;">1818148072</div>
+            </div>
+        </div>
+
+        </div>
+        <div class="progress-with-values">
+      <a-progress :show-info="false"  :success="{ percent: 40 }" />
+      <div class="progress-values">
+      <span>已成交3</span>
+      <span>目标10</span>
+    </div>
+         </div>
      </div>
         </div>
-        <div class="left-tabs-box__search-area-box">
-          <a-textarea
-            placeholder="请输入您的问题或需求"
-            style="width: 75%;"
-            :bordered="false"
-            :auto-size="{
-              maxRows: 6
-            }"
-            v-model:value="inputValue"
-          />
-          <div class="textarea-after-box">
-            <a-tooltip>
-              <template #title>
-                支持上传文件 (最多 50 个，每个 100 MB) 接受 pdf、doc、xlsx、ppt、txt、图片等
-              </template>
-              <div class="textarea-after-box__upload-img-box">
-                <img
-                  src="@/assets/img/svg/upload.svg"
-                  alt="upload-icon"
-                />
-              </div>
-            </a-tooltip>
-            <a-tooltip v-if="inputValue?.length === 0">
-              <template #title>
-                请输入你的问题
-              </template>
-              <div class="textarea-after-box__aircraft-img-box">
-                <img
-                  src="@/assets/img/svg/aircraft.svg"
-                  alt="aircraft-icon"
-                />
-              </div>
-            </a-tooltip>
-            <div
-              class="textarea-after-box__aircraft-img-box"
-              v-if="inputValue?.length > 0"
-            >
-              <img
-                src="@/assets/img/svg/aircraftActive.svg"
-                alt="aircraft-icon"
-              />
-            </div>
-          </div>
-        </div>
+     
       </div>
-      <div class="right-content-box">
-        <div class="right-content-box__navbar-box" style="height: 65px;">
-          <nav-bar />
-        </div>
-        <div class="right-content-box_content-self">
-         
-        </div>
-      </div>
+      
     </div>
     <a-modal  :width="500" v-model:open="visibleSale"  class="modalPhone" >
     <div style="display: flex;flex-direction: column;">
@@ -223,7 +216,7 @@ const currentTwo= ref(0)
     display: flex;
     .left-tabs-box {
       flex-shrink: 0;
-      width: 25%;
+      // width: 25%;
       height: 100%;
       background-color: #FFFFFF;
       display: flex;
@@ -364,12 +357,13 @@ overflow: hidden;
 
   .meng{
     width: 200px;
-    margin-top: 25px;
+    // margin-top: 25px;
   }
 
   .progress-with-values {
+    padding: 0 10px ;
   position: relative;
-  top: 40px;
+  top: -40px;
 }
 .progress-values {
   position: absolute;
@@ -391,7 +385,7 @@ transform: rotate(45deg);
 position: absolute;
     right: -16px;
     z-index: 0;
-
+line-height: 2;
 }
 
 .button-top{

@@ -12,7 +12,7 @@
         </div>
         <div class="out" @click="userOut">
             <!-- <img src="../../assets/image/user.png"></img> -->
-            <span style="color: #3964F5;" class="userImg"></span>
+            <span style="color: #3964F5;" class="userImg1">登录</span>
         </div>
       
     </div>
@@ -83,6 +83,38 @@
         </div>
       </template>
   </a-modal>
+
+  <a-modal  :width="500" v-model:open="visibleLogin"  class="modalPhone" >
+    <div style="display: flex;flex-direction: column;">
+    <div style="text-align: center;margin: 0 auto;">
+        <div class="login-body">
+            <a-input></a-input>
+            <a-input-search
+     
+      placeholder="输入验证码"
+      
+    >
+      <template #enterButton>
+        <a-button>获取验证码</a-button>
+      </template>
+    </a-input-search>
+        </div>
+        <div class="login-button">
+        <a-button>登录</a-button>
+        </div>
+        <div style="color: #5E6772; font-size: 14px;"><span class="rice">
+
+        </span>首次注册会自动创建新账号，且代表您已同意<span style="color: #3964F5;">
+            《用户协议》</span>和<span style="color: #3964F5;">《隐私政策》</span></div>
+
+    </div>
+</div>
+    <template #footer>
+        <div class="dialog-footer">
+        
+        </div>
+      </template>
+    </a-modal>
 </div>
 
   </template>
@@ -91,12 +123,15 @@ import { ref } from 'vue';
 import { TabletOutlined, EditOutlined} from '@ant-design/icons-vue';
 const visiblePhone = ref(false)
 const showOut  = ref(false)
+const visibleLogin = ref(false)
   function openPhone()  {
     visiblePhone.value = true
 }
 
 function userOut(){
-    showOut.value=!showOut.value
+    // showOut.value=!showOut.value
+    visibleLogin.value=true
+
 }
 </script>
   <style  scoped>
@@ -186,6 +221,20 @@ display: flex;
     display: block;
     margin: 0 auto;
 }
+
+.userImg1{
+    /* background: url('../../assets/image/user.png')no-repeat; */
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    border-radius:50%;
+    border: 1px solid #E8F1FF;
+    background-color: #E8F1FF;
+    text-align: center;
+    line-height: 3.5;
+}
+
 .out-body{      
     width: 260px;
     height: 235px;
@@ -203,4 +252,55 @@ display: flex;
     font-size: 24px;
     line-height: 2;
 }
+
+.login-body{
+    margin-top: 30px;
+    .ant-input{
+        width: 356px;
+    height: 48px;
+    border-radius: 45px;
+    margin-top: 20px;
+    }
+  .ant-input-group-wrapper{
+        width: 356px;
+    height: 48px;
+    border-radius: 45px;
+    margin-top: 20px;
+
+
+    }
+}
+:deep(.ant-input-group-addon){
+    border-bottom-right-radius: 45px!important;
+    border-top-right-radius: 45px!important;
+}
+:deep(.ant-input-search-button){
+    height: 48px;
+    border-bottom-right-radius: 45px!important;
+    border-top-right-radius: 45px!important;
+}
+    :deep(.ant-input){
+        height: 48px;
+        border-bottom-left-radius: 45px;
+        border-top-left-radius: 45px;
+
+    }
+    .login-button{
+        button{
+            width: 356px;
+            height: 48px;
+            background-color:rgba(57, 100, 245, 0.5) ;
+            color: #fff;
+            border-radius: 45px;
+            margin-top: 30px;
+        }
+    }
+
+    .rice{
+        width: 10px;
+    height: 10px;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 50%;
+    }
 </style>

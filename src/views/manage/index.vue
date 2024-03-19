@@ -21,7 +21,10 @@
           </div>
         </template>
       </div>
-      <div class="left-tabs-box__middle-list-box">
+      <div class="left-tabs-box__middle-list-box" v-if="current === 2">
+<salesLeft/>
+</div>
+      <div class="left-tabs-box__middle-list-box" v-else>
         <template
           v-for="item in searchHistory"
           :key="item.id"
@@ -67,7 +70,8 @@
           </div>
         </template>
       </div>
-      <div class="left-tabs-box__search-area-box">
+    
+      <div class="left-tabs-box__search-area-box" v-if="current!= 2">
         <div
           class="left-tabs-box__search-area-box__top-file-box"
           v-if="true"
@@ -145,6 +149,7 @@
         </div>
       </div>
     </div>
+    
     <div class="right-content-box">
       <div class="right-content-box__navbar-box" style="height: 65px;">
         <nav-bar />
@@ -166,7 +171,7 @@ import CustomerManagement from './components/CustomerManagement.vue'
 import SalesManagement from './components/SalesManagement.vue'
 import uploadingImg from '@/assets/img/svg/uploading.svg'
 import pdfImg from '@/assets/img/svg/pdf.svg'
-
+import salesLeft from './components/salesLeft.vue'
 const current = ref(0)
 
 const tabs = reactive([
