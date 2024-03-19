@@ -154,6 +154,12 @@
               <div class="step-current">通讯录好友</div>
               <div class="dash"></div>
             </div>
+            <div class="step">
+              <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/user.png" alt="" />
+                <span style="margin-left: 10px">周渊</span>
+              </div>
+            </div>
           </div>
         </a-tab-pane>
         <a-tab-pane key="2" tab="路径2" force-render

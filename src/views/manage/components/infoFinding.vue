@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a-tabs v-model:activeKey="activeKey">
+    <div  v-if="false">
+        <a-tabs v-model:activeKey="activeKey" @change="handleTabChange">
         <a-tab-pane key="1" tab="路径1" style="background-color: #fff;">
             <div style="display: inline-grid;width: 100%;">
                 <div class="step">
@@ -32,9 +32,67 @@
               </div>
             </div>
             </a-tab-pane>
-        <a-tab-pane key="2" tab="路径2" style="background-color: #fff;">
-</a-tab-pane>
-<a-tab-pane key="3" tab="路径3" style="background-color: #fff;">
+          <a-tab-pane key="2" tab="路径2" style="background-color: #fff;">
+            <div style="display: inline-grid;width: 100%;">
+                <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/user.png" alt="" />
+                <span style="margin-left: 10px">我</span>
+              </div>
+              <div class="dash"></div>
+              </div>
+              <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/what.png" alt="" />
+                <span style="margin-left: 10px">我</span>
+              </div>
+              <div class="dash"></div>
+
+              </div>
+              <div class="step">
+                <div @click="openBook" class="sync" style="display: flex;justify-content: center;  align-items: center">
+                    <a-button type="primary">导入通讯录</a-button>
+              </div>
+              <div style="margin: 0 auto;"  class="dash"></div>
+              </div>
+              <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/user.png" alt="" />
+                <span style="margin-left: 10px">周渊</span>
+              </div>
+              </div>
+            </div>
+        </a-tab-pane>
+        <a-tab-pane key="3" tab="路径3" style="background-color: #fff;">
+           <div style="display: inline-grid;width: 100%;">
+                <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/user.png" alt="" />
+                <span style="margin-left: 10px">我</span>
+              </div>
+              <div class="dash"></div>
+              </div>
+              <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/what.png" alt="" />
+                <span style="margin-left: 10px">我</span>
+              </div>
+              <div class="dash"></div>
+
+              </div>
+              <div class="step">
+                <div @click="count" class="sync" style="display: flex;justify-content: center;  align-items: center">
+                    <a-button type="primary">点击计算</a-button>
+              </div>
+              <div style="margin: 0 auto;"  class="dash"></div>
+              </div>
+              <div class="step">
+                <div style="display: flex; align-items: center">
+                <img src="../../../assets/image/user.png" alt="" />
+                <span style="margin-left: 10px">周渊</span>
+              </div>
+              </div>
+            </div>
 </a-tab-pane>
 <a-tab-pane key="4" tab="路径4" style="background-color: #fff;">
 </a-tab-pane>
@@ -80,23 +138,54 @@
         class="invest-body"
       >
         <div class="invest-body__top-title">商豆充值提醒</div>
-        <div></div>
+        <div class="invest-center-title">商豆余额：0</div>
         <div class="invest-body__bottom-txt">
-          <div class="invest-body__bottom-txt__title">扫码下载</div>
-          <div class="invest-body__bottom-txt__desc">商豆余额：0</div>
-          <div>您的商豆余额不足，请及时充值</div>
+          <div class="invest-body_red"><infoCircle-Outlined />您的商豆余额不足，请及时充值</div>
+          <div style="display: flex;justify-content: space-evenly;align-items: center;">
+            <div class="size-box">
+                <div style="font-size: 20px; font-weight: 400; color: #1D2129;line-height: 2;">20商豆</div>
+                <div style="color:#86909C;font-weight: 400;">20元</div>
+            </div>
+            <div class="size-box">
+                <div style="font-size: 20px; font-weight: 400; color: #1D2129;line-height: 2;">20商豆</div>
+                <div style="color:#86909C;font-weight: 400;">20元</div>
+            </div>
+            <div class="size-box">
+                <div style="font-size: 20px; font-weight: 400; color: #1D2129;line-height: 2;">20商豆</div>
+                <div style="color:#86909C;font-weight: 400;">20元</div>
+            </div>
+          </div>
+<div class="modal-btn">
+    <a-button type="primary">确认支付</a-button>
+
+</div>
+
         </div>
       </div>
     </a-modal>
+    <countRelation/>
 </template>
 <script setup>
   import { ref, reactive } from 'vue'
+import { InfoCircleOutlined } from "@ant-design/icons-vue";
+import countRelation from './FindComponents/countRelation.vue'
 const open = ref(false)
 const openInvest = ref(false)
 function openApp(){
-    // open.value=true
-    openInvest.value=true
+    open.value=true
 }
+function openBook(){
+    openInvest.value=true
+    
+}
+function handleTabChange (activeKey) {
+      this.currentTab = activeKey
+      this.getCurrentIconList()
+    }
+
+    function count(){
+
+    }
 </script>
 <style lang="less" scoped>
 .step {
@@ -157,10 +246,42 @@ function openApp(){
 }
 
 .invest-body{
+    line-height: 3;
     .invest-body__top-title{
         text-align: center;
         font-size: 16px;
-        
+
     }
+    .invest-center-title{
+        text-align: center;
+        font-size: 20px;
+        color: #3964F5;
+    }
+    .invest-body_red{
+        font-size: 14px;
+        color:#F53F3F;
+        text-align: center;
+    }
+}
+.size-box{
+    width: 120px;
+    height: 76px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+ margin-top: 20px;
+    & div{
+text-align: center;
+line-height: 3;
+    }
+}
+
+.modal-btn{
+    text-align: center;
+button{
+    width: 356px;
+    height: 48px;
+    border-radius: 64px;
+    margin-top:30px;
+}
 }
 </style>
