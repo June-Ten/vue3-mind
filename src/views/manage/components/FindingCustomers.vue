@@ -19,13 +19,13 @@
     <div class="bottom" v-if="!isViewDetail">
       <div
         class="bottom-empty"
-        v-if="false"
+        v-if="empty"
       >
         <span>
           抱歉！没有找到相关结果，您可以重新输入其他问题
         </span>
       </div>
-      <div class="bottom__list">
+      <div class="bottom__list" v-if="!empty">
         <CustomerCard
           v-for="item in 20"
         />
@@ -44,7 +44,7 @@
             @click="currentDeatil = item"
           />
         </div>
-        <div class="bottom-right-card-deatil-box" v-if="false">
+        <div class="bottom-right-card-deatil-box">
           <div class="bottom-right-card-deatil__top">
             <CardDetail />
           </div>
@@ -70,7 +70,7 @@
             <CreditReport v-if="currentCompanyId === 3" />
           </div>
         </div>
-        <div class="bottom-right-card-deatil-box" >
+        <div class="bottom-right-card-deatil-box"  v-if="false">
           <infoFinding/>
 </div>
       </div>
@@ -109,7 +109,7 @@ const tabs = [
   }
 ]
 
-const isViewDetail = ref(true)
+const isViewDetail = ref(false)
 
 const currentDeatil = ref(1)
 
@@ -137,6 +137,13 @@ const companyTabs = [
 ]
 
 const currentCompanyId = ref(0)
+
+const props = defineProps({
+  empty: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <style lang="less" scoped>
